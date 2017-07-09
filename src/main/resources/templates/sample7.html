@@ -1,0 +1,43 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Thymeleaf3</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+	<h1 th:text="${now}"></h1>
+
+	<h2 th:text="${#dates.format(now, 'yyyy-MM-dd')}"></h2>
+
+	<div th:with="timeValue=${#dates.createToday()}">
+		<p>[[${timeValue}]]</p>
+	</div>
+
+
+	<h1 th:text="${price}"></h1>
+
+	<h2 th:text="${#numbers.formatInteger(price,3,'COMMA')}"></h2>
+
+	<div th:with="priceValue=99.87654">
+		<p th:text="${#numbers.formatInteger(priceValue,3,'COMMA')}"></p>
+		<p th:text="${#numbers.formatDecimal(priceValue,5,10,'POINT')}"></p>
+	</div>
+
+	
+
+	<h1 th:text="${title}"></h1>
+	
+	<span th:utext="${#strings.replace(title,'s','<b>s</b>')}"></span>
+	<ul>
+	  <li th:each="str:${#strings.listSplit(title,' ')}">[[${str}]]
+	  </li>
+	</ul>
+
+	<h1 th:text="${options}"></h1>
+	
+
+	
+
+</body>
+</html>
